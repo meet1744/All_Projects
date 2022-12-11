@@ -79,24 +79,24 @@ choices.forEach((choice) => {
     choice.addEventListener('click', (e) => {
         if (!acceptingAnswers) return;
 
-    acceptingAnswers = false;
-    const selectedChoice = e.target;
-    const selectedAnswer = selectedChoice.dataset['number'];
+        acceptingAnswers = false;
+        const selectedChoice = e.target;
+        const selectedAnswer = selectedChoice.dataset['number'];
 
-    const classToApply =
-        selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect';
+        const classToApply =
+            selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect';
 
-    if (classToApply === 'correct') {
-        incrementScore(CORRECT_BONUS);
-    }
+        if (classToApply === 'correct') {
+            incrementScore(CORRECT_BONUS);
+        }
 
-    selectedChoice.parentElement.classList.add(classToApply);
+        selectedChoice.parentElement.classList.add(classToApply);
 
-    setTimeout(() => {
-        selectedChoice.parentElement.classList.remove(classToApply);
-        getNewQuestion();
-    }, 250);
-});
+        setTimeout(() => {
+            selectedChoice.parentElement.classList.remove(classToApply);
+            getNewQuestion();
+        }, 250);
+    });
 });
 
 incrementScore = num => {
